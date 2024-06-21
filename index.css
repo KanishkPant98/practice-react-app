@@ -17,10 +17,12 @@
     margin: 10px;
     list-style-type: none;
 }
-.search{
+.filter{
     margin: 10px;
     padding: 10px;
-    border: 1px solid;
+    .filter-btn{
+        cursor: pointer;
+    }
 }
 .res-container{
     display: flex;
