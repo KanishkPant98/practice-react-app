@@ -95,6 +95,16 @@ Episode 5 (Food odering App - 2)
   #Super Powers of React:-
     -React usess Reconcilition Algo also known as react fibre
     -Virtual Dom: Virtual DOM is representation of actual DOM
+-----
+Episode 6
+#Monolith and Microservice Architechture
+#Microservice Architechture: - Seperation of concerns (Single responsibility)
+#useEffect(cb,dependancyArr)
+  ->useEffect(()=>{
+    console.log('Use Effect is called')
+  },[])
 
-
-
+->If we have to manipulate DOM after re-rendering/rendring of DOM do it in useEffect()
+#Shimmer UI - Show skeleton till Data is available
+#Whenever state var changes React will re-render compoment and component will get updated values
+#Whenever local state var is changes - React re-renders component
