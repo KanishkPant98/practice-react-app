@@ -108,3 +108,8 @@ Episode 6
 #Shimmer UI - Show skeleton till Data is available
 #Whenever state var changes React will re-render compoment and component will get updated values
 #Whenever local state var is changes - React re-renders component
+--------
+Episode 6,7
+-How to handle corse issue, after disabling the cors plugin
+-corsproxy.io:
+-Add cors proxy url before your API
