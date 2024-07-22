@@ -109,7 +109,53 @@ Episode 6
 #Whenever state var changes React will re-render compoment and component will get updated values
 #Whenever local state var is changes - React re-renders component
 --------
-Episode 6,7
+Episode 6,6.1
 -How to handle corse issue, after disabling the cors plugin
 -corsproxy.io:
 -Add cors proxy url before your API
+------
+Episode 7
+-If no dependency array useEffect will be called on every componenet render
+-If the dependecy array is empty, then useEffect is called on initial render and just once.
+-If dependency array is defined, then useEffect is called whenenvever it is updated, useEffect(()+>{
+  console.log('Hello');
+},[btnNameReact])
+
+-Never create state var outside component
+-Nerver create useState inside if-else as it can create inconsisitency 
+
+#Routes
+- import React Router DOM
+  -Ex: import {createBrowserRouter,RouterProvider}
+-Set router configuration
+  EX: const appRouter = createBrowserRouter([
+    {
+      path: '/',
+      element: <AppLayout/>
+    },
+    {
+       path: '/about',
+      element: <About/>
+    }
+  ])
+-React router gives a special hook - 'useRouterError'
+#Whenever a function starts with use it is a hook in react
+
+#Children routes
+- <Outlet> is used to render the children route component on route change 
+-<Outlet> will be replaced by children component 
+
+#Never use an anchor tag when you want to navigate through pages when using React as it will reload the whole page instead use <Link to '/'></Link>
+->Above is the reason why we call React a SPA (Single Page Application)
+
+-There are two types of routing that we can have in web app
+  -Client Side Routing 
+  -Server Side Routing 
+
+#Dynamic Routing
+-Dyamic part is represented by ':' for example
+  {
+    path: '/restraunt/:resId',
+    element: <RestrauntMenu/>
+  }
+#useParams hook

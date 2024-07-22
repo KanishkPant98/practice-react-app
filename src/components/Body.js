@@ -1,6 +1,8 @@
 import RestrantCard from "./RestrantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import {Link} from 'react-router-dom'
+
 
 const Body = () => {
   //Local state  var - Super Powerful Var
@@ -65,7 +67,7 @@ const Body = () => {
       <div className="res-container">
         {/* Retraunt-Cards */}
         {filteredRestraunt.map((res) => {
-          return <RestrantCard key={res.id} resData={res} />;
+          return <Link key={res.id} to={'/restraunt/' + res.id}><RestrantCard resData={res} /></Link>;
         })}
       </div>
     </div>
