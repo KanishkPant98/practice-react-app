@@ -159,3 +159,57 @@ Episode 7
     element: <RestrauntMenu/>
   }
 #useParams hook
+
+-----------
+Episode 8
+#Class based component 
+-A functional component is a function that returns a JSX where as a CLASS BASED component is a class that has a render method which return JSX
+export default UserClass
+
+-To use props passed  in class based component we use constructor
+
+import React from "react"
+constructor(props){
+  super(props);
+  console.log(props)
+}
+class UserClass extends React.Component {
+  render(){
+    return (<h1>Hello</h1)
+  }
+}
+
+-How to update a state in class based component?
+  ->this.setState({
+    count: this.count + 1;
+  })
+
+-Life Cycle for class based component
+  ->parent Constructor()->parent render->child Constructor()->child render->child ComponentDidMount()->Parent ComponentDidMount()
+
+-Child Component Did mount can be used to call API 
+
+----
+Episode-09 Optimizing App
+
+-Creating customhooks to achieve single responsibilty principle
+
+
+
+Lazy Loading a component: Code will be presented to browswer when required
+
+Jargons- 
+//Chunking 
+//Code Splitting
+//Dynamic Bundeling
+//Lazy Loading
+//On Demand Loading
+
+import {Lazy, Suspense} from react
+
+const Grocery = lazy(()=>import("./component/Grocery"))
+
+{
+  path: '/grocery'
+  Component: <Suspense fallBack={<h1>Loading....</h1>}><Grocery><Grocery/><Suspense>
+}

@@ -2,14 +2,15 @@ import RestrantCard from "./RestrantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom'
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
   //Local state  var - Super Powerful Var
-
   const [listOfRestraunts, setListOfRestraunts] = useState([]);
   const [filteredRestraunt,setFilteredRestraunt] = useState([]);
   const [searchText,setSearchText]  = useState("")
+  const onlineStatus = useOnlineStatus()
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,6 +37,9 @@ const Body = () => {
     setListOfRestraunts(reqData);
     setFilteredRestraunt(reqData);
   };
+  if(onlineStatus === false){
+   return <h1>Looks like you are offline</h1>
+  }
   return listOfRestraunts.length == 0 ? (<Shimmer/>) : (
     <div className="body">
       <div className="filter">
