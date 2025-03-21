@@ -194,9 +194,7 @@ Episode-09 Optimizing App
 
 -Creating customhooks to achieve single responsibilty principle
 
-
-
-Lazy Loading a component: Code will be presented to browswer when required
+-Lazy Loading a component: Code will be presented to browswer when required
 
 Jargons- 
 //Chunking 
@@ -213,3 +211,16 @@ const Grocery = lazy(()=>import("./component/Grocery"))
   path: '/grocery'
   Component: <Suspense fallBack={<h1>Loading....</h1>}><Grocery><Grocery/><Suspense>
 }
+
+-----
+Episode 10 Jo Dikhta hai wahi bikta hai 
+
+-SASS/SCSS
+-Matrial UI/Chakra UI (PROVIDES PRESTYLED COMPONENTS)
+-Styled Components
+
+-**Tailwind CSS
+-Configuring Tailwind CSS for our React Project
+-(Using tailwind makes bundling size small)Faster as only required css is imported while building
+-Install tailwind intelli sense extension | Use tailwind website to search if you face dificulties
+-Dark mode using tailwind css
