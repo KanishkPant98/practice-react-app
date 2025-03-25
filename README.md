@@ -224,3 +224,59 @@ Episode 10 Jo Dikhta hai wahi bikta hai
 -(Using tailwind makes bundling size small)Faster as only required css is imported while building
 -Install tailwind intelli sense extension | Use tailwind website to search if you face dificulties
 -Dark mode using tailwind css
+-----------
+Episode 11| Data is the new oil
+-HOC (Higger Order Component)- A function that takes a component as an input -> enhances that component and returns that component 
+#Cannot change behavior but only enhance for eg- UX/UI or adding some props
+-UnControlled Component:-Relying upon its parent for it states
+-Controlled Component:-States are relied on parent
+#Lifting State Up:- Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. 
+#Props Drilling- passing data from data to grand childrens 
+#React context (Solves problem of props drilling) ****Important
+
+->Creating context
+
+import {createContext} from 'react'
+
+const UserContext = createContext({
+  loggedInUser: "Default User"
+})
+
+export default UserContext;
+---
+
+->Using Context
+
+import {userContext} from react
+import UserContext from '..//utils/UserContext' //path where UserContext is created
+
+const HeaderComponent = ()=>{
+  const {loggedInUser} = userContext(UserContext)
+}
+
+----
+->Using Context in class based component
+class UserClass extends React.Component{
+   constructoe(props){
+    super(props);
+   }
+   render(){
+    return(
+      <div>
+        <UserContext.Consumer>
+          {({loggedInUser})=> loggedInUser && <h2 >Logged In User: {loggedInUser}</h2>}
+        </UserContext.Consumer>
+      </div>
+    )
+   }
+}
+---
+->Providing Context API (Wrapping compoments user <UserContext.provide> so that the components wrapper has that value)
+
+<UserContext.provide value={{ loggedInUser: userName, setUserName: setUserName }}>
+  <Header/>
+  <Outlet/>
+</UserContext.provide>
+
+
+#Here we can pass setMethod (serUserName) in this case so that the components which are context can change the value of context

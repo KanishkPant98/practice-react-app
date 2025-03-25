@@ -1,8 +1,9 @@
-import RestrantCard from "./RestrantCard";
-import { useState, useEffect } from "react";
+import RestrantCard, { withPromotedLabel } from "./RestrantCard";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   //Local state  var - Super Powerful Var
@@ -13,7 +14,8 @@ const Body = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const { loggedInUser, setUserName } = useContext(UserContext);
+  const RestrantCardPromoted = withPromotedLabel(RestrantCard);
   const fetchData = async () => {
     let reqData = [];
     const data = await fetch(
@@ -45,7 +47,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="m-4">
-      <div>
+      <div className="flex">
         <input
           className="border border-solid border-black"
           value={searchText}
@@ -82,13 +84,26 @@ const Body = () => {
         >
           Reset List
         </button>
+        <div className="search m-4 p-4 flex">
+          <label className="mx-4">User Name:</label>
+          <input
+            className="border border-solid border-black"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+            type="text"
+          ></input>
+        </div>
       </div>
       <div className="flex flex-wrap-reverse">
         {/* Retraunt-Cards */}
         {filteredRestraunt.map((res) => {
           return (
             <Link key={res.id} to={"/restraunt/" + res.id}>
-              <RestrantCard resData={res} />
+              {res?.deliveryTime < 30 ? (
+                <RestrantCardPromoted resData={res} />
+              ) : (
+                <RestrantCard resData={res} />
+              )}
             </Link>
           );
         })}
