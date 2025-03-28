@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
@@ -11,6 +12,7 @@ import RestrauntMenu from "./components/RestrauntMenu.js";
 import UserContext from "./utils/UserContext.js";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import appStore from "./utils/appStore.js";
 
 //Chunking
 //Code Splitting
@@ -28,15 +30,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{ loggedInUser: userName, setUserName: setUserName }}
-    >
-      <div className="app">
-        <Header />
-
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName: setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

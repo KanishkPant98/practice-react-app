@@ -280,3 +280,30 @@ class UserClass extends React.Component{
 
 
 #Here we can pass setMethod (serUserName) in this case so that the components which are context can change the value of context
+
+---------------------------
+Episode 12| Lets build our Store
+->Redux: State management tool
+  ->Redux Dev tools helps to debug easier
+
+Understanding Redux using cart functionality example
+
+1.->Add to cart button clicked 
+2.-> DISPATCH(ACTION)
+3.->REDUCER()
+4.->cart (slice) value is changed inside redux store
+5.->Since component is subscribing to the store with the help of selector
+6.->Data gets updated the component
+
+
+
+#Steps to user Redux Toolkit
+  -Install @reduxjs/toolkit and react-redux
+  -Build our Store
+  -Connect our Store to our app
+  -Create a Slice (cartSlice)
+  -dispatch(action)
+  -Selector
+
+
+

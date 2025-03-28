@@ -3,6 +3,7 @@ import { useEffect, useState,useContext} from "react";
 import {Link} from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   //If dependency array is defined, then useEffect is called whenenvever it is updated
@@ -13,6 +14,11 @@ const Header = () => {
   },[btnNameReact]);//state 
   const onlineStatus = useOnlineStatus();
   const {loggedInUser} = useContext(UserContext);
+
+  //Subsribing to the store using selector
+  const carItems = useSelector((store)=>store.cart.items);
+  console.log(carItems)
+
   console.log(loggedInUser);
   return (
     <div className="flex justify-between shadow-lg mb-2 sm: bg-pink-50 lg:bg-green-50">
@@ -25,7 +31,7 @@ const Header = () => {
           <li className="px-4 cursor-pointer"><Link to = '/'>Home</Link></li>
           <li className="px-4 cursor-pointer"><Link to = '/about'>About Us</Link></li>
           <li className="px-4 cursor-pointer"><Link to = '/contact'>Contact Us</Link></li>
-          <li className="px-4 cursor-pointer"><Link to = '/cart'>Cart</Link></li>
+          <li className="px-4 cursor-pointer font-bold"><Link to = '/cart'>Cart-{carItems?.length} items</Link></li>
           <li className="px-4 cursor-pointer"><Link to = '/grocery'>Grocery</Link></li>
           <button
             onClick={() => {
